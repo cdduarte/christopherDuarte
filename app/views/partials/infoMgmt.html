@@ -1,0 +1,26 @@
+<div class="jumbotron">
+  <div class="introTitle"><h1><strong>Info <em>Mgmt</em></strong></h1></div>
+  <div collapse="!isCollapsed">
+    <div class="introP" ng-repeat="intro in awsomeIntros | filter:{title: '[Info Mgmt]'}">
+      <p>{{intro.text}}<p>
+    </div>
+  </div>
+  <a class="btn btn-default" ng-click="gotoTop(); isCollapsed = !isCollapsed"><i class="fa fa-bars fa-2x"></i></a>
+  <div collapse="isCollapsed">
+    <input id="box1" type="checkbox" ng-model="oneAtATime"/>
+    <label for="box1">
+      Open only one at a time
+    </label>
+    <accordion close-others="oneAtATime">
+      <accordion-group is-open="status.open" ng-repeat="thing in awesomeInfoMgmts">
+      	<h5>{{thing.subtitle}}</h5>
+        <h5>{{thing.category}}</h5>
+      	<accordion-heading>
+                <div class="panel-heading">{{thing.title}}
+                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></div>
+        </accordion-heading>
+      	<p ng-bind-html="thing.text"></p>      
+      </accordion-group> 
+    </accordion>
+  </div>
+</div>

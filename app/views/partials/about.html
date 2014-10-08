@@ -1,0 +1,37 @@
+<div class="jumbotron">
+	<div class="introTitle"><h1><strong>About <em>Me</em></strong></h1></div>
+	<div collapse="!isCollapsed">
+		<div class="intoP">
+			<p ng-bind-html="intros.text"></p>
+		</div><!-- /introP -->
+	</div><!-- /!isCollapsed -->
+	<a class="btn btn-default" ng-click="gotoTop(); isCollapsed = !isCollapsed"><i class="fa fa-bars fa-2x"></i></a>
+	<div collapse="isCollapsed">
+		<tabset>
+			<tab heading="Education">
+    			<div ng-repeat="school in schools">
+    				<h5>{{school.title}}</h5>
+		    		<h6>{{school.text}}, {{school.date}}</h6>
+		    	</div>
+			</tab> 
+			<tab heading="Skills">
+		    	<h5>{{skills.title}}</h5>
+		    	<h5>{{skills.text}}</h5>
+			</tab> 	
+			<tab heading="Projects">
+				<input id="box1" type="checkbox" ng-model="oneAtATime"/>
+				<label for="box1">
+			      Open only one at a time
+			    </label>
+			    <accordion>
+			    	<accordion-group is-open="status.open" ng-repeat="project in projects">		    
+				    	<accordion-heading>
+				    		{{project.title}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+				    	</accordion-heading>
+				    	<p ng-bind-html="project.text"></p>
+					</accordion-group>
+			    </accordion><!-- /oneAtATime -->
+			</tab>    
+		</tabset><!-- /tabset -->    
+	</div><!-- /isCopllapsed -->
+</div><!-- /jumbotron -->

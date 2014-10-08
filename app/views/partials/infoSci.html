@@ -1,0 +1,49 @@
+<div class="jumbotron">
+	<div class="introTitle"><h1><strong>Info <em>Sci</em></strong></h1></div>
+	<div collapse="!isCollapsed">
+		<div class="introP" ng-repeat="intro in awsomeIntros | filter:{title: 'Info [Sci]'}">
+		    <p>{{intro.text}}<p>
+	  	</div>
+  	</div>
+	<a class="btn btn-default" ng-click="isCollapsed = !isCollapsed; gotoTop()"><i class="fa fa-bars fa-2x"></i></a>
+	<div collapse="isCollapsed">
+		<tabset>
+			<tab heading="Java">
+				<div>
+					<input id="box1" type="checkbox" ng-model="oneAtATime"/>
+					<label for="box1">
+						Open only one at a time
+					</label>
+					<accordion>
+						<accordion-group is-open="status.open" ng-repeat="gist in awesomeGists | filter: {language: 'Java SE'}">
+							<accordion-heading>
+								{{gist.title}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+							</accordion-heading>
+							<h5>{{gist.subtitle}}</h5>
+							<h5>{{gist.language}}</h5>
+							<gist id="{{gist.id}}"></gist>
+						</accordion-group>	
+					</accordion>
+				</div>
+			</tab>
+			<tab heading="Python">
+				<div>
+					<input id="box1" type="checkbox" ng-model="oneAtATime"/>
+					<label for="box1">
+						Open only one at a time
+					</label>
+					<accordion>
+						<accordion-group is-open="status.open" ng-repeat="gist in awesomeGists | filter: {language: 'Python 2.x'}">
+							<accordion-heading>
+								{{gist.title}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+							</accordion-heading>
+							<h5>{{gist.subtitle}}</h5>
+							<h5>{{gist.language}}</h5>
+							<gist id="{{gist.id}}"></gist>
+						</accordion-group>
+					</accordion>	
+				</div>
+			</tab>
+		</tabset>
+	</div>	
+</div>
